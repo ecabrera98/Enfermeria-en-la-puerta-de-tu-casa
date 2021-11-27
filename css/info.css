@@ -1,0 +1,45 @@
+
+.info{
+	background: #fff;
+	color: #333;
+}
+
+
+.contenedor02{
+	max-width: 960px;
+	margin: auto;
+	overflow: hidden;
+	padding: 4rem 1rem;
+}
+
+.colum2{
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns:repeat(2, 1fr); 
+}
+
+.center{
+	text-align: center;
+	margin:auto;
+}
+/*-----------Responsive-----------*/
+/*Dispositivo Movil*/
+@media(min-width: 480px){
+	.info-mascota{
+		width: 40%;
+	}
+}
+
+/*Tablets*/
+@media(min-width: 768px){
+	.info-mascota{
+		width: 40%;
+	}
+}
+
+/*Escritorio*/
+@media(min-width: 1024px){
+	.info-mascota{
+		width: auto;
+	}
+}

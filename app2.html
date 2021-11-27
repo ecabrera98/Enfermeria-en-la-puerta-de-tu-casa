@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <title>Backbone.GoogleMaps | Example</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <title>Enfermeria a la Puerta de tu Casa</title>
   <style type="text/css">
     html {
       height: 100%
@@ -60,29 +61,40 @@
     }
   </style>
 
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?&sensor=false"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB53NGdp9qvZMuFK1qXKe4VQquINKkRN1w&q&sensor=false"></script>
   <script type="text/javascript" src="lib/jquery-2.0.3.js"></script>
   <script type="text/javascript" src="lib/underscore.js"></script>
   <script type="text/javascript" src="lib/backbone.js"></script>
-  <script type="text/javascript" src="../lib/backbone.googlemaps.js"></script>
+  <script type="text/javascript" src="lib/backbone.googlemaps.js"></script>
 </head>
 
 <body>
+  <header>
+		<div class="contenedor">
+			<h4>Enfermería en la puerta de tu Casa</h4>
+			<input type="checkbox" id="menu-bar">
+			<label class="icon-menu" for="menu-bar"></label>
+			<nav class="menu">
+				<a href="index.html">Inicio</a>
+				<a href="app.html">Colocación de Medicamentos</a>
+        <a href="app2.html">Canalización de Vías</a>
+        <a href="educacion.html">Educación</a>
+			</nav>
+		</div>
+	</header> 
 
 <!-- TEMPLATE: InfoWindow
  ============================== -->
-<script id="infoWindow-template" type="text/html">
+<!-- <script id="infoWindow-template" type="text/html">
   <h2><%=title %></h2>
   <p>Latitude: <%=lat %></p>
   <p>Longitude: <%=lng %></p>
-</script>
+</script> -->
 
 
 <div id="search-area" class="overlay">
-  <button id="museums">find museums</button>
-  <button id="bars">find bars</button>
-  <button id="addBtn">add</button>
-  <button id="removeBtn">remove</button>
+  <button id="centrossalud">Centros Médicos Disponibles</button>
+  <button id="enfermeras">Enfermeras Disponibles</button>
 </div>
 
 <div id="map_canvas" style="width:100%; height:100%"></div>
@@ -91,46 +103,65 @@
 /**
  * Example App
  */
-
+ /*
+ Ariana Achicanoy 20 años 
+Karen Guamán 22 años
+Paola Loachamin 24 años 
+Monica Soto 20 años
+Lizbeth Simba 21 años 
+Todas universidad católica
+*/
 // Sample Data
-var museums = [
+var centrossalud = [
   {
-    title: "Walker Art Center",
-    lat: 44.9796635,
-    lng: -93.2748776,
-    type: 'museum'
+    title: "Hospital del Día",
+    lat: -0.19939918056770015, 
+    lng: -78.50595716854325, 
+    type: 'centrosalud'
   },
   {
-    title: "Science Museum of Minnesota",
-    lat: 44.9429618,
-    lng: -93.0981016,
-    type: 'museum'
+    title: "Hospital Inglés",
+    lat: -0.2059559366647383, 
+    lng: -78.49977631898246,
+    type: 'centrosalud'
   },
   {
-    title: "The Museum of Russian Art",
-    lat: 44.9036337,
-    lng: -93.2755413,
-    type: 'museum'
+    title: "Hospital Carlos Andrade Marín",
+    lat: -0.2050607433500375, 
+    lng: -78.5046468088653,
+    type: 'centrosalud'
   }
 ];
-var bars = [
+var enfermeras = [
   {
-    title: "Park Tavern",
-    lat: 44.9413272,
-    lng: -93.3705791,
-    type: 'bar'
+    title: "Ariana Achicanoy 20 años",
+    lat: -0.2059559366647383, 
+    lng: -78.49977631898246,
+    type: 'enfermera'
   },
   {
-    title: "Chatterbox Pub",
-    lat: 44.9393882,
-    lng: -93.2391039,
-    type: 'bar'
+    title: "Karen Guamán 22 años",
+    lat: -0.19939918056770015, 
+    lng: -78.50595716854325, 
+    type: 'enfermera'
   },
   {
-    title: "Acadia Cafe",
-    lat: 44.9709853,
-    lng: -93.2470717,
-    type: 'bar'
+    title: "Paola Loachamin 24 años",
+    lat: -0.19939918056770015, 
+    lng: -78.50698816854326,
+    type: 'enfermera'
+  },
+  {
+    title: "Monica Soto 20 años",
+    lat: -0.2050607433500375, 
+    lng: -78.5046468088653,
+    type: 'enfermera'
+  },
+  {
+    title: "Lizbeth Simba 21 años",
+    lat: -0.2050607433500375, 
+    lng: -78.5057468088653,
+    type: 'enfermera'
   }
 ];
 
@@ -140,8 +171,8 @@ var App = {};
 App.Location = Backbone.GoogleMaps.Location.extend({
   idAttribute: 'title',
   defaults: {
-    lat: 45,
-    lng: -93
+    lat: 0,
+    lng: -78
   }
 });
 
@@ -192,14 +223,14 @@ App.MarkerView = Backbone.GoogleMaps.MarkerView.extend({
 App.MuseumMarker = App.MarkerView.extend({
   overlayOptions: {
     draggable: true,
-    icon: 'assets/museum.png'
+    icon: 'assets/centrosalud.png'
   }
 });
 
 App.BarMarker = App.MarkerView.extend({
   overlayOptions: {
     draggable: true,
-    icon: 'assets/beer.png'
+    icon: 'assets/enfermera.png'
   }
 });
 
@@ -207,7 +238,7 @@ App.MarkerCollectionView = Backbone.GoogleMaps.MarkerCollectionView.extend({
   markerView: App.MarkerView,
 
   addChild: function(model) {
-    this.markerView = model.get('type') === 'museum' ?
+    this.markerView = model.get('type') === 'centrosalud' ?
             App.MuseumMarker :
             App.BarMarker;
 
@@ -218,7 +249,7 @@ App.MarkerCollectionView = Backbone.GoogleMaps.MarkerCollectionView.extend({
 App.init = function() {
   this.createMap();
 
-  this.places = new this.LocationCollection(museums);
+  this.places = new this.LocationCollection(centrossalud);
 
   // Render Markers
   var markerCollectionView = new this.MarkerCollectionView({
@@ -236,8 +267,8 @@ App.init = function() {
 
 App.createMap = function() {
   var mapOptions = {
-    center: new google.maps.LatLng(44.9796635, -93.2748776),
-    zoom: 12,
+    center: new google.maps.LatLng(-0.20238133956169221, -78.50783987389208),
+    zoom: 15,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
 
@@ -317,25 +348,14 @@ App.ListView = Backbone.View.extend({
 $(document).ready(function() {
   App.init();
 
-  $('#bars').click(function() {
-    App.places.reset(bars);
+  $('#enfermeras').click(function() {
+    App.places.reset(enfermeras);
   });
 
-  $('#museums').click(function() {
-    App.places.reset(museums);
+  $('#centrossalud').click(function() {
+    App.places.reset(centrossalud);
   });
 
-  $('#addBtn').click(function() {
-    App.places.add({
-      title: 'State Capitol Building',
-      lat: 44.9543075,
-      lng: -93.102222
-    });
-  });
-
-  $('#removeBtn').click(function() {
-    App.places.remove(App.places.at(0));
-  });
 });
 
 

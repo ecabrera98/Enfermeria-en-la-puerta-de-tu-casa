@@ -1,0 +1,76 @@
+#banner{
+	margin-top: 50px;
+	position: relative;
+}
+
+#banner img{
+	top: 60%;
+	width: 500px;
+	height: 480px;
+	position: relative;
+}
+
+#banner .contenedor{
+	position: absolute;
+	top: 40%;
+	left: 80%;
+	transform: translateX(-50%) translateY(-50%);
+	color: rgb(20, 5, 109);
+}
+
+#banner h2{
+	font-size: 28px;
+}
+
+#banner a{
+	display: block;
+	width: 100px;
+	color: #fff;
+	text-decoration: none;
+	padding: 7px;
+	margin-top: 10px;
+	border: 3px solid #fff;
+}
+
+#banner a:hover{
+	background: rgba(255,255,255,.5);
+}
+
+/*-----------Responsive-----------*/
+/*Dispositivo Movil*/
+@media(min-width: 420px){
+	#banner h2{
+		font-size: 40px;
+	}
+	
+	#banner img{
+		height: auto;
+		margin-top: -100px;
+	}
+
+	#banner a{
+		margin-top: 25px;
+	}
+	
+}
+
+/*Tablets*/
+@media(min-width: 768px){
+	#banner{
+		height: 300px;
+		overflow: hidden;
+	}
+
+	#banner img{
+		height: auto;
+		margin-top: -100px;
+	}
+}
+
+/*Escritorio*/
+@media(min-width: 1024px){
+	#banner img{
+		margin-top: -200px;
+	}
+
+}
