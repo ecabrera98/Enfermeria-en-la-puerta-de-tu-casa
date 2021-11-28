@@ -4,9 +4,9 @@
 }
 
 #banner img{
-	top: 60%;
-	width: 500px;
-	height: 480px;
+	top: 70%;
+	width: 300px;
+	height: 200px;
 	position: relative;
 }
 
@@ -18,8 +18,13 @@
 	color: rgb(20, 5, 109);
 }
 
+#banner h1{
+	font-size: 30px;
+}
+
+
 #banner h2{
-	font-size: 28px;
+	font-size: 25px;
 }
 
 #banner a{
@@ -52,8 +57,10 @@
 	}
 	
 	#banner img{
-		height: 10px;
-		position: center;
+		top: 10%;
+		width: 300px;
+		height: 200px;
+		position: relative;
 	}
 
 	#banner a{
