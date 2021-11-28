@@ -23,7 +23,7 @@ body{
 
 header{
 	width: 100%;
-	height: 50px;
+	height: 55px;
 	background: #494948; 
 	color: #fff;
 
@@ -65,14 +65,3 @@ section{
 }
 
 
-@media screen and (max-width:900px){
-	.contenedor{
-		width: 800px;
-	}
-}
-
-@media screen and (min-width: 360px) and (max-width: 640px){
-	.contenedor{
-		width: 540px;
-	}
-}

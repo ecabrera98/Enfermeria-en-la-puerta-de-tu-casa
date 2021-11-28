@@ -38,14 +38,22 @@
 
 /*-----------Responsive-----------*/
 /*Dispositivo Movil*/
-@media(min-width: 420px){
+@media screen and (min-width: 360px) and (max-width: 640px){
 	#banner h2{
-		font-size: 40px;
+		font-size: 50px;
+	}
+
+	#banner .contenedor{
+		position: absolute;
+		top: 40%;
+		left: 100%;
+		transform: translateX(-50%) translateY(-50%);
+		color: rgb(20, 5, 109);
 	}
 	
 	#banner img{
-		height: auto;
-		margin-top: -100px;
+		height: 10px;
+		position: center;
 	}
 
 	#banner a{
