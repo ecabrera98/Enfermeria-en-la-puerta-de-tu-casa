@@ -63,3 +63,16 @@ section{
 	}
 
 }
+
+
+@media screen and (max-width:900px){
+	.contenedor{
+		width: 800px;
+	}
+}
+
+@media screen and (min-width: 360px) and (max-width: 640px){
+	.contenedor{
+		width: 540px;
+	}
+}
