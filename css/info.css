@@ -1,12 +1,17 @@
 
 .info{
-	background: #fff;
+	background: rgb(235, 206, 206);
 	color: #333;
 }
 
+.info2{
+	background: rgb(235, 206, 206);
+	color: #333;
+}
 
 .contenedor02{
-	max-width: 960px;
+	max-width: 3000px;
+	max-height: 3000px;
 	margin: auto;
 	overflow: hidden;
 	padding: 4rem 1rem;
@@ -21,6 +26,20 @@
 .center{
 	text-align: center;
 	margin:auto;
+}
+
+.info img{
+	width: 1100px;
+	height: 2000px;
+	display:block;
+    margin:auto;
+}
+
+.info2 img{
+	width: 600px;
+	height: 700px;
+	display:block;
+    margin:auto;
 }
 /*-----------Responsive-----------*/
 /*Dispositivo Movil*/
